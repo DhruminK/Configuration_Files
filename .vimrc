@@ -10,7 +10,8 @@ set nocompatible
 
 " Configure tabwidth
 set nowrap
-set softtabstop=4	" tab width is 4 spaces
+set tabstop=4
+"set softtabstop=4	" tab width is 4 spaces
 set shiftwidth=4	" also indent with 4 spaces
 
 " Indentation
