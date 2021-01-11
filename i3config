@@ -59,6 +59,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+exec --no-startup-id conky -c ~/Configurations/config/new-conky1.config
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xautolock -time 10 -locaker i3lock
 
@@ -73,7 +74,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec "cd $(xcwd); i3-sensible-terminal"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -90,8 +91,12 @@ bindsym $mod_next+Tab exec --no-startup-id "rofi -show-icons -modi windowcd,wind
 bindsym $mod_next+Return exec --no-startup-id "rofi -show-icons -modi windowcd,window,drun -show drun"
 
 # Sound Section
-exec --no-startup-id volumeicon
+# exec --no-startup-id volumeicon
 bindsym $mod+Shift+m exec pavucontrol
+
+# Screenshot Section
+bindsym $mod_next+4 exec flameshot gui -p ~/Captures/
+bindsym $mod_next+3 exec flameshot full -p ~/Captures/
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -248,5 +253,5 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+		status_command i3status
 }
